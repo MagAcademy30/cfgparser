@@ -4,6 +4,8 @@
 		  By MG30
 """
 
+import os
+
 #Класс библиотеки
 class cfgparser:
 	def __init__(self):
@@ -14,7 +16,7 @@ class cfgparser:
 	def read(self, path):
 		#В этой функции мы читаем и парсим конфиг файл
 		self.path = path #Ставим главный путь к файлу
-		file = open(path, "r", encoding=self.encoding) #Открываем файл
+		file = open(path, "r+", encoding=self.encoding) #Открываем файл
 		text = str(file.read()).split("\n") #Читаем и сразу делим на строчки
 		file.close() #Закрываем файл что бы не повредить
 		for line in text: #Переходим в цикл
@@ -33,6 +35,6 @@ class cfgparser:
 			got = "%s=%s\n" % (name, data) #Делаем текст
 			text += got #Добавляем его в главный текст для записи
 
-		file = open(self.path, "w", encoding=self.encoding) #Открываем файл
+		file = open(self.path, "w+", encoding=self.encoding) #Открываем файл
 		file.write(text) #Записываем
 		file.close() #Закрываем файл
