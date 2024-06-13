@@ -1,6 +1,6 @@
 """
 		 cfgparser
-Библиотека для конфиг файлов.
+Мини Библиотека для конфиг файлов.
 		  By MG30
 """
 
@@ -8,14 +8,13 @@ import os
 
 #Класс библиотеки
 class cfgparser:
-	def __init__(self):
+	def __init__(self, path):
 		self.data = {} #Это переменная в которой хранятся данные файла в формате словаря, которые можно изменять.
-		self.path = None
+		self.path = path # Путь к файлу
 		self.encoding = "utf-8"
 
-	def read(self, path):
+	def read(self):
 		#В этой функции мы читаем и парсим конфиг файл
-		self.path = path #Ставим главный путь к файлу
 		file = open(path, "r+", encoding=self.encoding) #Открываем файл
 		text = str(file.read()).split("\n") #Читаем и сразу делим на строчки
 		file.close() #Закрываем файл что бы не повредить
